@@ -77,7 +77,8 @@ class Api
         $fields[PayboxParams::PBX_HASH] = $this->options['hash'];
         $fields[PayboxParams::PBX_SOURCE] = $this->isMobileBrowser() ? PayboxParams::PBX_SOURCE_MOBILE : PayboxParams::PBX_SOURCE_DESKTOP;
         $fields[PayboxParams::PBX_RETOUR] = PayboxParams::PBX_RETOUR_VALUE;
-        $fields[PayboxParams::PBX_HMAC] = strtoupper($this->computeHmac($this->options['hmac'], $fields));
+        $fields[PayboxParams::PBX_TIME] = date('c');
+        $fields[PayboxParams::PBX_HMAC] = $this->computeHmac($this->options['hmac'], $fields);
         $authorizeTokenUrl = $this->getApiEndpoint();
         throw new HttpPostRedirect($authorizeTokenUrl, $fields);
     }
@@ -116,9 +117,8 @@ class Api
         // Si la clé est en ASCII, On la transforme en binaire
         $binKey = pack('H*', $hmac);
         $msg = $this->stringify($fields);
-        $string = strtoupper(hash_hmac($fields[PayboxParams::PBX_HASH], $msg, $binKey));
 
-        return $string;
+        return strtoupper(hash_hmac($fields[PayboxParams::PBX_HASH], $msg, $binKey));
     }
 
     /**
