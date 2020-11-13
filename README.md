@@ -9,7 +9,7 @@ This plugin has been forked from [libre-informatique/sylius-paybox-bundle](https
 1. Install this bundle:
 
 ```bash
-composer require triotech/sylius-paybox-bundle:dev-master@dev
+composer require integralservice/sylius-paybox-bundle:dev-master@dev
 ```
 
 2. Configure payment method in Sylius Admin Panel

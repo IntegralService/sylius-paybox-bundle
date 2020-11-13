@@ -1,5 +1,5 @@
 {
-    "name": "triotech/sylius-paybox-bundle",
+    "name": "integralservice/sylius-paybox-bundle",
     "type": "symfony-bundle",
     "description": "Paybox gateway for Sylius projects.",
     "keywords": ["Sylius", "Payum", "Paybox", "Symfony"],
@@ -19,7 +19,12 @@
             "name": "qkdreyer",
             "email": "quentin.dreyer@triotech.fr",
             "homepage": "https://www.triotech.fr"
-        }
+        },
+	{
+	    "name": "integralservice",
+	    "email": "support@integral-service.",
+	    "homepage": "https://www.integral-service.fr"
+	}
     ],
     "require": {
         "php": ">=7.1",
@@ -27,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Triotech\\SyliusPayboxBundle\\": "src/"
+            "IntegralService\\SyliusPayboxBundle\\": "src/"
         }
     },
     "require-dev": {

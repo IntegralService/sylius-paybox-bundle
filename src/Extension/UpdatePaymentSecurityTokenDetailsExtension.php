@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Triotech\SyliusPayboxBundle\Extension;
+namespace IntegralService\SyliusPayboxBundle\Extension;
 
 use Payum\Core\Extension\Context;
 use Payum\Core\Extension\ExtensionInterface;
