@@ -10,9 +10,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Triotech\SyliusPayboxBundle\Action;
+namespace IntegralService\SyliusPayboxBundle\Action;
 
-use Triotech\SyliusPayboxBundle\PayboxParams;
+use IntegralService\SyliusPayboxBundle\PayboxParams;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\RequestNotSupportedException;

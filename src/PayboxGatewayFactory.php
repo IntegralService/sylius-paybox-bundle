@@ -10,15 +10,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Triotech\SyliusPayboxBundle;
+namespace IntegralService\SyliusPayboxBundle;
 
-use Triotech\SyliusPayboxBundle\Action\AuthorizeAction;
-use Triotech\SyliusPayboxBundle\Action\CancelAction;
-use Triotech\SyliusPayboxBundle\Action\ConvertPaymentAction;
-use Triotech\SyliusPayboxBundle\Action\CaptureAction;
-use Triotech\SyliusPayboxBundle\Action\NotifyAction;
-use Triotech\SyliusPayboxBundle\Action\RefundAction;
-use Triotech\SyliusPayboxBundle\Action\StatusAction;
+use IntegralService\SyliusPayboxBundle\Action\AuthorizeAction;
+use IntegralService\SyliusPayboxBundle\Action\CancelAction;
+use IntegralService\SyliusPayboxBundle\Action\ConvertPaymentAction;
+use IntegralService\SyliusPayboxBundle\Action\CaptureAction;
+use IntegralService\SyliusPayboxBundle\Action\NotifyAction;
+use IntegralService\SyliusPayboxBundle\Action\RefundAction;
+use IntegralService\SyliusPayboxBundle\Action\StatusAction;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\GatewayFactory;
 

@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Triotech\SyliusPayboxBundle\Action;
+namespace IntegralService\SyliusPayboxBundle\Action;
 
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;

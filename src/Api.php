@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Triotech\SyliusPayboxBundle;
+namespace IntegralService\SyliusPayboxBundle;
 
 use Http\Message\MessageFactory;
 use Payum\Core\Exception\Http\HttpException;

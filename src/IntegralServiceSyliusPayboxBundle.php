@@ -10,17 +10,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Triotech\SyliusPayboxBundle;
+namespace IntegralService\SyliusPayboxBundle;
 
-use Triotech\SyliusPayboxBundle\DependencyInjection\TriotechSyliusPayboxExtension;
+use IntegralService\SyliusPayboxBundle\DependencyInjection\IntegralServiceSyliusPayboxExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class TriotechSyliusPayboxBundle extends Bundle
+final class IntegralServiceSyliusPayboxBundle extends Bundle
 {
     public function getContainerExtension()
     {
         if (null === $this->extension) {
-            $this->extension = new TriotechSyliusPayboxExtension();
+            $this->extension = new IntegralServiceSyliusPayboxExtension();
         }
 
         return $this->extension;
