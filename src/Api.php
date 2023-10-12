@@ -69,7 +69,20 @@ class Api
         return $response;
     }
 
-    public function doPayment(array $fields)
+    function getISO3166Numeric($alpha2Code) {
+        $iso3166Alpha2ToNumeric = array(
+            "FR" => 250, // France
+            "CH" => 756, // Suisse
+            "BE" => 056, // Belgique
+        );
+        if (isset($iso3166Alpha2ToNumeric[$alpha2Code])) {
+            return $iso3166Alpha2ToNumeric[$alpha2Code];
+        } else {
+            return 250;
+        }
+    }
+
+    public function doPayment(array $fields, $order)
     {
         $fields[PayboxParams::PBX_SITE] = $this->options['site'];
         $fields[PayboxParams::PBX_RANG] = $this->options['rang'];
@@ -78,6 +91,35 @@ class Api
         $fields[PayboxParams::PBX_SOURCE] = $this->isMobileBrowser() ? PayboxParams::PBX_SOURCE_MOBILE : PayboxParams::PBX_SOURCE_DESKTOP;
         $fields[PayboxParams::PBX_RETOUR] = PayboxParams::PBX_RETOUR_VALUE;
         $fields[PayboxParams::PBX_TIME] = date('c');
+
+        $billingXml = '<?xml version="1.0" encoding="utf-8" ?>
+<Billing>
+  <Address>
+    <FirstName>'. $order->getBillingAddress()->getFirstName() .'</FirstName>
+    <LastName>'. $order->getBillingAddress()->getLastName() .'</LastName>
+    <Address1>'. $order->getBillingAddress()->getStreet() .'</Address1>
+    <ZipCode>'. $order->getBillingAddress()->getPostcode() .'</ZipCode>
+    <City>'. $order->getBillingAddress()->getCity() .'</City>
+    <CountryCode>'. $this->getISO3166Numeric($order->getBillingAddress()->getCountryCode()) .'</CountryCode>
+  </Address>
+</Billing>';
+
+        $fields[PayboxParams::PBX_BILLING] =  str_replace("\n","",$billingXml);
+
+        $quantity = 0;
+
+        foreach($order->getItems() as $item) {
+            $quantity += $item->getQuantity();
+        }
+
+        $shoppingCartXml =  '<?xml version="1.0" encoding="utf-8" ?>
+<shoppingcart>
+  <total>
+    <totalQuantity>'. $quantity .'</totalQuantity>
+  </total>
+</shoppingcart>';
+
+        $fields[PayboxParams::PBX_SHOPPINGCART] =  str_replace("\n","", $shoppingCartXml);
         $fields[PayboxParams::PBX_HMAC] = $this->computeHmac($this->options['hmac'], $fields);
         $authorizeTokenUrl = $this->getApiEndpoint();
         throw new HttpPostRedirect($authorizeTokenUrl, $fields);
@@ -132,7 +174,7 @@ class Api
     {
         $result = array();
         foreach ($array as $key => $value) {
-            $result[] = sprintf('%s=%s', $key, $value);
+            $result[] = sprintf('%s=%s', $key, str_replace("\n","",$value));
         }
 
         return implode('&', $result);
