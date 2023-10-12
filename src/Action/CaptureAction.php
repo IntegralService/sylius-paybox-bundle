@@ -47,7 +47,7 @@ class CaptureAction extends GatewayAwareAction implements ApiAwareInterface
         if (isset($httpRequest->query['error_code'])) {
             $model->replace($httpRequest->query);
         } else {
-            $this->api->doPayment((array) $model);
+            $this->api->doPayment((array) $model, $request->getFirstModel()->getOrder());
         }
     }
 

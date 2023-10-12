@@ -18,10 +18,10 @@ namespace IntegralService\SyliusPayboxBundle;
 interface PayboxParams
 {
     // Default servers urls
-    const SERVERS_PREPROD = array('preprod-tpeweb.e-transactions.fr');
+    const SERVERS_PREPROD = array('recette-tpeweb.e-transactions.fr');
     const SERVERS_PROD = array('tpeweb.e-transactions.fr', 'tpeweb1.e-transactions.fr');
 
-    const URL_CLASSIC = 'cgi/MYchoix_pagepaiement.cgi';
+    const URL_CLASSIC = 'php/';
     const URL_IFRAME = 'cgi/MYframepagepaiement_ip.cgi';
     const URL_MOBILE = 'cgi/ChoixPaiementMobile.cgi';
 
@@ -51,4 +51,6 @@ interface PayboxParams
     const PBX_REPONDRE_A = 'PBX_REPONDRE_A';
     const PBX_TIME = 'PBX_TIME';
     const PBX_SOURCE = 'PBX_SOURCE';
+    const PBX_BILLING = 'PBX_BILLING';
+    const PBX_SHOPPINGCART = 'PBX_SHOPPINGCART';
 }
