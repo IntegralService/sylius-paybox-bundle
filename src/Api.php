@@ -82,6 +82,19 @@ class Api
         }
     }
 
+    function getCountryCodeMobilePhone($alpha2Code) {
+        $iso3166Alpha2ToNumeric = array(
+            "FR" => 33,
+            "CH" => 41,
+            "BE" => 32,
+        );
+        if (isset($iso3166Alpha2ToNumeric[$alpha2Code])) {
+            return '+' . $iso3166Alpha2ToNumeric[$alpha2Code];
+        } else {
+            return '+' . 33;
+        }
+    }
+
     public function doPayment(array $fields, $order)
     {
         $fields[PayboxParams::PBX_SITE] = $this->options['site'];
@@ -101,6 +114,8 @@ class Api
     <ZipCode>'. $order->getBillingAddress()->getPostcode() .'</ZipCode>
     <City>'. $order->getBillingAddress()->getCity() .'</City>
     <CountryCode>'. $this->getISO3166Numeric($order->getBillingAddress()->getCountryCode()) .'</CountryCode>
+    <MobilePhone>'. $order->getBillingAddress()->getPhoneNumber() .'</MobilePhone>
+    <CountryCodeMobilePhone>'. $this->getCountryCodeMobilePhone($order->getBillingAddress()->getCountryCode()) .'</CountryCodeMobilePhone>
   </Address>
 </Billing>';
 
