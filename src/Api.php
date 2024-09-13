@@ -74,6 +74,36 @@ class Api
             "FR" => 250, // France
             "CH" => 756, // Suisse
             "BE" => 056, // Belgique
+            "LU" => 352, // Luxembourg
+            "MC" => 754, // Monaco
+            "AD" => 756, // Andorre
+            "SM" => 756, // San Marino
+            "VA" => 33, // Vatican
+            "IT" => 380, // Italie
+            "ES" => 34, // Espagne
+            "PT" => 351, // Portugal
+            "FI" => 358, // Finlande
+            "AX" => 358, // Îles Åland
+            "BG" => 359, // Bulgarie
+            "SI" => 386, // Slovenie
+            "HR" => 385, // Croatie
+            "ME" => 382, // Montenegro
+            "RS" => 381, // Serbie
+            "BA" => 387, // Bosnie-Herzégovine
+            "AL" => 355, // Albanie
+            "MK" => 389, // Macedoine
+            "RO" => 40, // Roumanie
+            "CZ" => 420, // Tchéquie
+            "SK" => 421, // Slovaquie
+            "LI" => 423, // Liechtenstein
+            "LT" => 370, // Lituanie
+            "MD" => 373, // Moldavie
+            "UA" => 380, // Ukraine
+            "BY" => 375, // Biélorussie
+            "HU" => 36, // Hongrie
+            "PL" => 48, // Pologne
+            "DE" => 49, // Allemagne
+            "AT" => 43, // Autriche
         );
         if (isset($iso3166Alpha2ToNumeric[$alpha2Code])) {
             return $iso3166Alpha2ToNumeric[$alpha2Code];
@@ -84,9 +114,39 @@ class Api
 
     function getCountryCodeMobilePhone($alpha2Code) {
         $iso3166Alpha2ToNumeric = array(
-            "FR" => 33,
-            "CH" => 41,
-            "BE" => 32,
+            "FR" => 33, // France
+            "CH" => 41, // Suisse
+            "BE" => 32, // Belgique
+            "LU" => 352, // Luxembourg
+            "MC" => 377, // Monaco
+            "AD" => 376, // Andorre
+            "SM" => 378, // San Marino
+            "VA" => 39, // Vatican
+            "IT" => 39, // Italie
+            "ES" => 34, // Espagne
+            "PT" => 351, // Portugal
+            "FI" => 358, // Finlande
+            "AX" => 358, // Îles Åland
+            "BG" => 359, // Bulgarie
+            "SI" => 386, // Slovenie
+            "HR" => 385, // Croatie
+            "ME" => 382, // Montenegro
+            "RS" => 381, // Serbie
+            "BA" => 387, // Bosnie-Herzégovine
+            "AL" => 355, // Albanie
+            "MK" => 389, // Macedoine
+            "RO" => 40, // Roumanie
+            "CZ" => 420, // Tchéquie
+            "SK" => 421, // Slovaquie
+            "LI" => 423, // Liechtenstein
+            "LT" => 370, // Lituanie
+            "MD" => 373, // Moldavie
+            "UA" => 380, // Ukraine
+            "BY" => 375, // Biélorussie
+            "HU" => 36, // Hongrie
+            "PL" => 48, // Pologne
+            "DE" => 49, // Allemagne
+            "AT" => 43, // Autriche
         );
         if (isset($iso3166Alpha2ToNumeric[$alpha2Code])) {
             return '+' . $iso3166Alpha2ToNumeric[$alpha2Code];
